@@ -3,7 +3,7 @@ import IndexController from '@controllers/index.controller';
 import { Routes } from '@interfaces/routes.interface';
 
 class IndexRoute implements Routes {
-  public path = '/users/';
+  public path = '/app';
   public router = Router();
   public indexController = new IndexController();
 
@@ -12,7 +12,7 @@ class IndexRoute implements Routes {
   }
 
   private initializeRoutes() {
-    this.router.post(`${this.path}:id`, this.indexController.index);
+    this.router.post(`${this.path}`, this.indexController.index);
   }
 }
 
