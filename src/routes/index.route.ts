@@ -12,7 +12,7 @@ class IndexRoute implements Routes {
   }
 
   private initializeRoutes() {
-    this.router.get(`${this.path}:id`, this.indexController.index);
+    this.router.post(`${this.path}:id`, this.indexController.index);
   }
 }
 
