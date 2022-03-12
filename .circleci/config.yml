@@ -12,6 +12,9 @@ jobs:
       - image: docker:17.05.0-ce-git
     environment:
       DOCKER_REGISTERY: tribeplatform/app-starter
+      REVIEW_APP_NAME: app-starter
+      REVIEW_APP_REGION: us-east-1
+      REVIEW_APP_IMAGE_URI: $DOCKER_REGISTERY:$CIRCLE_SHA1
     # Add steps to the job
     # See: https://circleci.com/docs/2.0/configuration-reference/#steps
     steps:
@@ -34,11 +37,7 @@ jobs:
          username: $DOCKER_HUB_USERNAME
          password: $DOCKER_HUB_PASSWORD   
     environment:
-      DOCKER_REGISTERY: tribeplatform/app-starter
-      REVIEW_APP_NAME: app-starter
       REVIEW_APP_ENV: development
-      REVIEW_APP_REGION: us-east-1
-      REVIEW_APP_IMAGE_URI: $DOCKER_REGISTERY:$CIRCLE_SHA1
     steps:
       - checkout   
       - run:
@@ -51,11 +50,7 @@ jobs:
          username: $DOCKER_HUB_USERNAME
          password: $DOCKER_HUB_PASSWORD   
     environment:
-      DOCKER_REGISTERY: tribeplatform/app-starter
-      REVIEW_APP_NAME: app-starter
       REVIEW_APP_ENV: production
-      REVIEW_APP_REGION: us-east-1
-      REVIEW_APP_IMAGE_URI: $DOCKER_REGISTERY:$CIRCLE_SHA1
     steps:
       - checkout   
       - run:
