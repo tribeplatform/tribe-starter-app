@@ -1,1 +1,1 @@
-# campfire-starter-app
+# app-starter
