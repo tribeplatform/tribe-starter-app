@@ -6,7 +6,6 @@ class IndexController {
 
   public index = async (req: Request, res: Response, next: NextFunction) => {
     try {
-      console.log(req.body);
       if (req.body?.data?.challenge) {
         res.json({
           type: 'TEST',
@@ -16,8 +15,8 @@ class IndexController {
           },
         });
       } else {
-        const memberInfo = await this.clientService.getMemberByID(req.params.id);
-        res.json({});
+        const memberInfo = await this.clientService.getMemberByID(req.body.data.object.ownerId);
+        res.json(memberInfo);
       }
     } catch (error) {
       next(error);
