@@ -29,7 +29,7 @@ jobs:
                 docker push "${DOCKER_REGISTERY}:${CIRCLE_SHA1}"
   publish-dev:
     docker:
-      - image: tribeplatform/tribecd:0.1.14
+      - image: tribeplatform/tribecd:0.1.15
         auth:
          username: $DOCKER_HUB_USERNAME
          password: $DOCKER_HUB_PASSWORD   
@@ -46,7 +46,7 @@ jobs:
           command: tcdi -cu
   publish-prod:
     docker:
-      - image: tribeplatform/tribecd:0.1.14
+      - image: tribeplatform/tribecd:0.1.15
         auth:
          username: $DOCKER_HUB_USERNAME
          password: $DOCKER_HUB_PASSWORD   
