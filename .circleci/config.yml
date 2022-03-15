@@ -46,7 +46,7 @@ jobs:
           command: tcdi -cu
   publish-prod:
     docker:
-      - image: tribeplatform/tribecd:0.1.10
+      - image: tribeplatform/tribecd:0.1.12
         auth:
          username: $DOCKER_HUB_USERNAME
          password: $DOCKER_HUB_PASSWORD   
