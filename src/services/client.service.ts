@@ -2,7 +2,7 @@ import userModel from '@models/users.model';
 import { TribeClient } from '@tribeplatform/gql-client';
 import { logger } from '@utils/logger';
 import { HttpException } from '@exceptions/HttpException';
-import { CLIENT_ID, CLIENT_SECRET, NETWORK_ID, MEMBER_ID } from '@config';
+import { CLIENT_ID, CLIENT_SECRET, NETWORK_ID, MEMBER_ID, GRAPHQL_URL } from '@config';
 
 class ClientService {
   private tribeClient: TribeClient = null;
@@ -23,7 +23,7 @@ class ClientService {
       this.tribeClient = new TribeClient({
         clientId: CLIENT_ID,
         clientSecret: CLIENT_SECRET,
-        graphqlUrl: 'https://app.tribe.so/graphql',
+        graphqlUrl: GRAPHQL_URL,
       });
     }
   }
