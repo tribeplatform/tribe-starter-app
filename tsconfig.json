@@ -6,6 +6,8 @@
     "typeRoots": ["node_modules/@types"],
     "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true,
+    "jsx": "react",
+    "esModuleInterop": true,
     "emitDecoratorMetadata": true,
     "forceConsistentCasingInFileNames": true,
     "moduleResolution": "node",
@@ -17,7 +19,6 @@
     "outDir": "dist",
     "allowJs": true,
     "noEmit": false,
-    "esModuleInterop": true,
     "resolveJsonModule": true,
     "importHelpers": true,
     "baseUrl": "src",
@@ -33,9 +34,10 @@
       "@models/*": ["models/*"],
       "@routes/*": ["routes/*"],
       "@services/*": ["services/*"],
+      "@views/*": ["services/*"],
       "@utils/*": ["utils/*"]
     }
   },
-  "include": ["src/**/*.ts", "src/**/*.json", ".env"],
+  "include": ["src/**/*.ts", "src/**/*.json", ".env", "src/views/home.tsx"],
   "exclude": ["node_modules", "src/http", "src/logs", "src/tests"]
 }

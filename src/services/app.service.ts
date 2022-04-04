@@ -4,13 +4,13 @@ import { logger } from '@utils/logger';
 import { HttpException } from '@exceptions/HttpException';
 import { CLIENT_ID, CLIENT_SECRET, NETWORK_ID, MEMBER_ID, GRAPHQL_URL } from '@config';
 
-class ClientService {
+class AppService {
   private tribeClient: TribeClient = null;
   private accessToken = null;
   private users = userModel;
 
   constructor() {
-    this.initTribeClient();
+    // this.initTribeClient();
   }
 
   private async initTribeClient() {
@@ -19,12 +19,16 @@ class ClientService {
   }
 
   private genrateTribeClientInstance() {
-    if (this.tribeClient === null) {
-      this.tribeClient = new TribeClient({
-        clientId: CLIENT_ID,
-        clientSecret: CLIENT_SECRET,
-        graphqlUrl: GRAPHQL_URL,
-      });
+    try {
+      if (this.tribeClient === null) {
+        this.tribeClient = new TribeClient({
+          clientId: CLIENT_ID,
+          clientSecret: CLIENT_SECRET,
+          graphqlUrl: GRAPHQL_URL,
+        });
+      }
+    } catch (error) {
+      logger.error(error);
     }
   }
 
@@ -60,4 +64,4 @@ class ClientService {
   }
 }
 
-export default ClientService;
+export default AppService;
