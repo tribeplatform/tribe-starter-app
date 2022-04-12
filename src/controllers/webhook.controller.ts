@@ -1,7 +1,8 @@
 import { NextFunction, Request, Response } from 'express';
+
 import ClientService from '@services/app.service';
 
-class AppController {
+class WebhookController {
   private clientService = new ClientService();
 
   public index = async (req: Request, res: Response, next: NextFunction) => {
@@ -24,4 +25,4 @@ class AppController {
   };
 }
 
-export default AppController;
+export default WebhookController;
