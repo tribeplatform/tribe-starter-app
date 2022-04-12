@@ -4,7 +4,10 @@ import MixpanelService from '@/services/mixpanel.service';
 import { Types } from '@tribeplatform/gql-client';
 import { logger } from '@/utils/logger';
 
-const DEFAULT_SETTINGS = {};
+const DEFAULT_SETTINGS = {
+  apiKey: null,
+  region: 'us',
+};
 
 class WebhookController {
   public index = async (req: Request, res: Response, next: NextFunction) => {
