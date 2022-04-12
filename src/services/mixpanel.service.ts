@@ -9,7 +9,7 @@ export enum MIXPANEL_REGIONS {
 
 class MixpanelService {
   private token = null;
-  private region: string = '';
+  private region = '';
 
   constructor(token: string, region: string) {
     this.token = token;
