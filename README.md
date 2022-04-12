@@ -104,7 +104,9 @@ _Below is an example of how you can instruct your audience on installing and set
 ## Usage
 
 Here are the apps built using this template.
-[To be completed]
+
+- [Mixpanel](https://github.com/tribeplatform/tribe-mixpanel-app)
+
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -146,7 +148,8 @@ Don't forget to give the project a star! Thanks again!
 
 ## License
 
-Distributed under the MIT License. See `LICENSE.txt` for more information.
+<!--Distributed under the MIT License. See `LICENSE.txt` for more information.-->
+[TO BE ADDED]
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
