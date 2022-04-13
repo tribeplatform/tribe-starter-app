@@ -1,21 +1,23 @@
+import { CREDENTIALS, LOG_FORMAT, NODE_ENV, ORIGIN, PORT } from '@config';
+import { connect, set } from 'mongoose';
+import { logger, stream } from '@utils/logger';
+
+import ClientApp from '@client/App';
+import React from 'react';
+import { Routes } from '@interfaces/routes.interface';
+import { StaticRouter } from 'react-router-dom';
+import { StaticRouterContext } from 'react-router';
+import bodyParser from 'body-parser'
 import compression from 'compression';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
+import { dbConnection } from '@databases';
+import errorMiddleware from '@middlewares/error.middleware';
 import express from 'express';
-import React from 'react';
-import { renderToString } from 'react-dom/server';
-import { StaticRouterContext } from 'react-router';
-import { StaticRouter } from 'react-router-dom';
-import ClientApp from '@client/App';
 import helmet from 'helmet';
 import hpp from 'hpp';
 import morgan from 'morgan';
-import { connect, set } from 'mongoose';
-import { NODE_ENV, PORT, LOG_FORMAT, ORIGIN, CREDENTIALS } from '@config';
-import { dbConnection } from '@databases';
-import { Routes } from '@interfaces/routes.interface';
-import errorMiddleware from '@middlewares/error.middleware';
-import { logger, stream } from '@utils/logger';
+import { renderToString } from 'react-dom/server';
 
 class App {
   public app: express.Application;
@@ -61,6 +63,13 @@ class App {
     this.app.use(morgan(LOG_FORMAT, { stream }));
     this.app.use(cors({ origin: ORIGIN, credentials: CREDENTIALS }));
     this.app.use(express.static('public'));
+    this.app.use(
+      bodyParser.json({
+        verify: (req, res, buf) => {
+          if (req.url.includes('/api/webhook')) req['rawBody'] = buf;
+        },
+      }),
+    );
     this.app.use(hpp());
     this.app.use(helmet());
     this.app.use(compression());
