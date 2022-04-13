@@ -15,14 +15,38 @@ const buffer = fs.readFileSync(`${__dirname}/${filename}`);
 const fileContent = buffer.toString();
 
 let settings = {};
-try {
-  settings = JSON.parse(argv.settings);
-} catch (err) {
-  console.log();
-  console.log('Warning: Setting was not parsed.');
-  console.log();
+let member = {};
+let network = {};
+
+if (argv.settings) {
+  try {
+    settings = JSON.parse(argv.settings);
+  } catch (err) {
+    console.log();
+    console.log('Warning: Parsing settings has failed.');
+    console.log();
+  }
+}
+if (argv.network) {
+  try {
+    network = JSON.parse(argv.network);
+  } catch (err) {
+    console.log();
+    console.log('Warning: Parsing network has failed.');
+    console.log();
+  }
+}
+
+if (argv.member) {
+  try {
+    member = JSON.parse(argv.member);
+  } catch (err) {
+    console.log();
+    console.log('Warning: Parsing member has failed.');
+    console.log();
+  }
 }
 
 const engine = new Liquid();
 const tpl = engine.parse(fileContent);
-engine.render(tpl, { v: 'Liquid', settings }).then(console.log);
+engine.render(tpl, { v: 'Liquid', settings, member, network }).then(console.log);
