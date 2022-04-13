@@ -2,7 +2,7 @@ import { CREDENTIALS, LOG_FORMAT, NODE_ENV, ORIGIN, PORT } from '@config';
 import { connect, set } from 'mongoose';
 import { logger, stream } from '@utils/logger';
 import { Routes } from '@interfaces/routes.interface';
-import bodyParser from 'body-parser'
+import bodyParser from 'body-parser';
 import compression from 'compression';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
@@ -56,7 +56,7 @@ class App {
   private initializeMiddlewares() {
     this.app.use(morgan(LOG_FORMAT, { stream }));
     this.app.use(cors({ origin: ORIGIN, credentials: CREDENTIALS }));
-    this.app.use(express.static('public'));
+    this.app.use(express.static(path.join(__dirname, 'public')));
     this.app.use(
       bodyParser.json({
         verify: (req, res, buf) => {
@@ -78,7 +78,7 @@ class App {
     });
 
     this.app.use((req, res, next) => {
-      res.sendFile(path.join(__dirname, '../public/index.html'));
+      res.sendFile(path.join(__dirname, '/public/index.html'));
     });
   }
 

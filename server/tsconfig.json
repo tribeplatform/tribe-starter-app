@@ -21,6 +21,7 @@
     "resolveJsonModule": true,
     "importHelpers": true,
     "baseUrl": "src",
+    "outDir": "dist",
     "paths": {
       "@/*": ["*"],
       "@config": ["config"],
