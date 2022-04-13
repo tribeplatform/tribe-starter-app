@@ -43,13 +43,17 @@ class App {
     return this.app;
   }
 
-  private connectToDatabase() {
+  private async connectToDatabase() {
     if (this.env !== 'production') {
       set('debug', true);
     }
 
     if (dbConnection) {
-      connect(dbConnection.url, dbConnection.options);
+      try {
+        await connect(dbConnection.url, dbConnection.options);
+      } catch (error) {
+        logger.error(error);
+      }
     }
   }
 
