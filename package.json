@@ -13,7 +13,7 @@
   "scripts": {
     "dev": "concurrently \"yarn workspace client dev\" \"yarn workspace server dev\"",
     "build": "concurrently \"yarn workspace client build\" \"yarn workspace server build\"",
-    "start": "cross-env NODE_ENV=production node server/dist/index.js"
+    "start": "cross-env NODE_ENV=production PORT=3000 node server/dist/index.js"
   },
   "devDependencies": {
     "concurrently": "^7.1.0",
