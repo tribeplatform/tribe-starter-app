@@ -97,7 +97,7 @@ _Below is an example of how you can instruct your audience on installing and set
 ## Usage
 
 
-- [Mixpanel app](https://github.com/othneildrew/Best-README-Template)
+- [Mixpanel app](https://github.com/tribeplatform/tribe-mixpanel-app)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
