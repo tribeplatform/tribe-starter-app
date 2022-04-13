@@ -1,6 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
 
-import MixpanelService from '@/services/mixpanel.service';
 import { Types } from '@tribeplatform/gql-client';
 import { logger } from '@/utils/logger';
 
