@@ -5,11 +5,10 @@
   "author": "",
   "license": "ISC",
   "scripts": {
-    "start": "cross-env NODE_ENV=production node dist/server.js",
+    "start": "cross-env NODE_ENV=production node dist/main.js",
     "webpack:build": "webpack --config webpack.config",
     "webpack:watch": "webpack --watch --config webpack.config",
     "dev": "cross-env NODE_ENV=development yarn webpack:build && cross-env NODE_ENV=development concurrently \"yarn webpack:watch\" \"nodemon ./dist/main.js --watch dist\"",
-    "build": "tsc && tsc-alias",
     "test": "jest --forceExit --detectOpenHandles",
     "lint": "eslint --ignore-path .gitignore --ext .ts src/",
     "lint:fix": "npm run lint -- --fix"
