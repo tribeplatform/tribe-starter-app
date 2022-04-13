@@ -1,0 +1,13 @@
+{
+  "name": "custom_script",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "liquidjs": "^9.36.0",
+    "yargs": "^17.4.1"
+  },
+  "scripts": {
+    "render:body": "node render.ts --body",
+    "render:head": "node render.ts --head"
+  }
+}
