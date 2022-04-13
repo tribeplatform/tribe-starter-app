@@ -2,7 +2,7 @@
 
 <br />
 <div align="center">
-  <a href="https://github.com/othneildrew/Best-README-Template">
+  <a href="https://tribe.so">
     <img src="https://tribe.so/webflow-v2/images/TribeLogo.svg" alt="Logo" width="80" height="80">
   </a>
 
@@ -96,8 +96,8 @@ _Below is an example of how you can instruct your audience on installing and set
 
 ## Usage
 
-Here are the apps built using this template.
-[To be completed]
+
+- [Mixpanel app](https://github.com/othneildrew/Best-README-Template)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
