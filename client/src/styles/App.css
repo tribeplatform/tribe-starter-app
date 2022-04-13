@@ -1,0 +1,13 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.Home {
+  width: 100vw;
+  height: 100vh;
+  background-image: url('./../images/cover.png');
+  background-position: center center;
+  background-attachment: fixed;
+  background-color: black;
+}

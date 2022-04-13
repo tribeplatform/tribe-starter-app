@@ -1,12 +1,7 @@
 import { CREDENTIALS, LOG_FORMAT, NODE_ENV, ORIGIN, PORT } from '@config';
 import { connect, set } from 'mongoose';
 import { logger, stream } from '@utils/logger';
-
-import ClientApp from '@client/App';
-import React from 'react';
 import { Routes } from '@interfaces/routes.interface';
-import { StaticRouter } from 'react-router-dom';
-import { StaticRouterContext } from 'react-router';
 import bodyParser from 'body-parser'
 import compression from 'compression';
 import cookieParser from 'cookie-parser';
@@ -17,13 +12,12 @@ import express from 'express';
 import helmet from 'helmet';
 import hpp from 'hpp';
 import morgan from 'morgan';
-import { renderToString } from 'react-dom/server';
+import path from 'path';
 
 class App {
   public app: express.Application;
   public env: string;
   public port: string | number;
-  private cssAssets = ['style.css'];
 
   constructor(routes: Routes[]) {
     this.app = express();
@@ -78,47 +72,13 @@ class App {
     this.app.use(cookieParser());
   }
 
-  cssLinksFromAssets() {
-    return this.cssAssets.map(asset => `<link rel="stylesheet" href="/css/${asset}">`).join('');
-  }
-
-  private renderApp(req: express.Request, res: express.Response) {
-    const context: StaticRouterContext = {};
-
-    const markup = renderToString(
-      <StaticRouter context={context} location={req.url}>
-        <ClientApp />
-      </StaticRouter>,
-    );
-
-    const html =
-      // prettier-ignore
-      `<!doctype html>
-      <html lang="">
-      <head>
-          <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-          <meta charSet='utf-8' />
-          <title>Welcome to Tribe Starter App</title>
-          <meta name="viewport" content="width=device-width, initial-scale=1">
-          ${this.cssLinksFromAssets()}
-      </head>
-      <body>
-          <div id="root">${markup}</div>
-      </body>
-    </html>`;
-
-    return html;
-  }
-
   private initializeRoutes(routes: Routes[]) {
     routes.forEach(route => {
       this.app.use(route.router);
     });
 
     this.app.use((req, res, next) => {
-      // const html = this.renderApp(req, res);
-      // res.send(html);
-      res.sendFile('/Users/ermiaqasemi/Projects/Tribe/campfire-starter-app/my-app/public/index.html');
+      res.sendFile(path.join(__dirname, '../public/index.html'));
     });
   }
 

@@ -14,9 +14,8 @@
     "module": "commonjs",
     "skipLibCheck": true,
     "pretty": true,
-    "sourceMap": true,
-    "declaration": true,
-    "outDir": "dist",
+    "sourceMap": false,
+    "declaration": false,
     "allowJs": true,
     "noEmit": false,
     "resolveJsonModule": true,
@@ -39,6 +38,6 @@
       "@utils/*": ["utils/*"]
     }
   },
-  "include": ["src/**/*.ts", "src/**/*.json", ".env", "src/views/home.tsx"],
+  "include": ["src/**/*.ts", "src/**/*.json", ".env", "src/tsconfig.json"],
   "exclude": ["node_modules", "src/http", "src/logs", "src/tests"]
 }

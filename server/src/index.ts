@@ -2,6 +2,8 @@ import App from '@/app';
 import HealthRoute from '@routes/health.route';
 import WebhookRoute from '@routes/webhook.route';
 import validateEnv from '@utils/validateEnv';
+import webpack from 'webpack';
+import webpackConfig from './../../webpack.config';
 
 validateEnv();
 
