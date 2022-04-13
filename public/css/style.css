@@ -1,0 +1,19 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+.Home{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  background-color: black;
+  background-attachment: fixed;
+  background-image: url(/images/cover.png);
+  background-position: center center;
+}
+
+.Tribe {
+  width: 100%;
+}

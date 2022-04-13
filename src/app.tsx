@@ -1,12 +1,15 @@
 import compression from 'compression';
 import cookieParser from 'cookie-parser';
-import path from 'path';
 import cors from 'cors';
 import express from 'express';
+import React from 'react';
+import { renderToString } from 'react-dom/server';
+import { StaticRouterContext } from 'react-router';
+import { StaticRouter } from 'react-router-dom';
+import ClientApp from '@client/App';
 import helmet from 'helmet';
 import hpp from 'hpp';
 import morgan from 'morgan';
-import { setupReactViews } from 'express-tsx-views';
 import { connect, set } from 'mongoose';
 import { NODE_ENV, PORT, LOG_FORMAT, ORIGIN, CREDENTIALS } from '@config';
 import { dbConnection } from '@databases';
@@ -18,24 +21,17 @@ class App {
   public app: express.Application;
   public env: string;
   public port: string | number;
+  private cssAssets = ['style.css'];
 
-  constructor(routes: { client: Routes[]; server: Routes[] }) {
+  constructor(routes: Routes[]) {
     this.app = express();
     this.env = NODE_ENV || 'development';
     this.port = PORT || 3000;
 
     this.connectToDatabase();
     this.initializeMiddlewares();
-    this.setViews();
     this.initializeRoutes(routes);
     this.initializeErrorHandling();
-  }
-
-  private setViews() {
-    setupReactViews(this.app, {
-      viewsDirectory: path.join(__dirname, '/views'),
-      prettify: true,
-    });
   }
 
   public listen() {
@@ -64,6 +60,7 @@ class App {
   private initializeMiddlewares() {
     this.app.use(morgan(LOG_FORMAT, { stream }));
     this.app.use(cors({ origin: ORIGIN, credentials: CREDENTIALS }));
+    this.app.use(express.static('public'));
     this.app.use(hpp());
     this.app.use(helmet());
     this.app.use(compression());
@@ -72,13 +69,47 @@ class App {
     this.app.use(cookieParser());
   }
 
-  private initializeRoutes(routes: { client: Routes[]; server: Routes[] }) {
-    routes.client.forEach(route => {
-      this.app.use('/', route.router);
+  cssLinksFromAssets() {
+    return this.cssAssets.map(asset => `<link rel="stylesheet" href="/css/${asset}">`).join('');
+  }
+
+  private renderApp(req: express.Request, res: express.Response) {
+    const context: StaticRouterContext = {};
+
+    const markup = renderToString(
+      <StaticRouter context={context} location={req.url}>
+        <ClientApp />
+      </StaticRouter>,
+    );
+
+    const html =
+      // prettier-ignore
+      `<!doctype html>
+      <html lang="">
+      <head>
+          <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+          <meta charSet='utf-8' />
+          <title>Welcome to Tribe Starter App</title>
+          <meta name="viewport" content="width=device-width, initial-scale=1">
+          ${this.cssLinksFromAssets()}
+      </head>
+      <body>
+          <div id="root">${markup}</div>
+      </body>
+    </html>`;
+
+    return html;
+  }
+
+  private initializeRoutes(routes: Routes[]) {
+    routes.forEach(route => {
+      this.app.use(route.router);
     });
 
-    routes.server.forEach(route => {
-      this.app.use('/api', route.router);
+    this.app.use((req, res, next) => {
+      // const html = this.renderApp(req, res);
+      // res.send(html);
+      res.sendFile('/Users/ermiaqasemi/Projects/Tribe/campfire-starter-app/my-app/public/index.html');
     });
   }
 
