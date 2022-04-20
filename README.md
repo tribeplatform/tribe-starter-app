@@ -80,13 +80,13 @@ _Below is an example of how you can instruct your audience on installing and set
    ```sh
    git clone https://github.com/tribeplatform/tribe-starter-app
    ```
-3. Install NPM packages
+3. Install packages
    ```sh
-   npm install
+   yarn
    ```
 4. Create your .env file by duplicating .env.example
    ```js
-   cp.env.example.env;
+   cp .env.example .env;
    ```
 5. Add the credentials of your app, database, etc in the .env
 
