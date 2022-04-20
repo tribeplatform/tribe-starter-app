@@ -4,7 +4,7 @@ import signatureMiddleware from '@middlewares/signature.middleware';
 import WebhookController from '@controllers/webhook.controller';
 
 class IndexRoute implements Routes {
-  public path = '/webhook';
+  public path = '/api/webhook';
   public router = Router();
   public webhookController = new WebhookController();
 
