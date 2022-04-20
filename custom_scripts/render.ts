@@ -48,5 +48,4 @@ if (argv.member) {
 }
 
 const engine = new Liquid();
-const tpl = engine.parse(fileContent);
-engine.render(tpl, { v: 'Liquid', settings, member, network }).then(console.log);
+engine.parseAndRender(fileContent, { v: 'Liquid', settings, member, network }).then(console.log)

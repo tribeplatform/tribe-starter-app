@@ -130,3 +130,4 @@ build
 .yarn/install-state.gz
 .pnp.*
 *.DS_Store
+custom_scripts/output
