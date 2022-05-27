@@ -1,5 +1,5 @@
 # Build App
-FROM node:17.4.0-alpine as Builder
+FROM node:16.13.0-alpine as Builder
 WORKDIR /tribe/app
 
 COPY package.json yarn.lock ./
