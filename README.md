@@ -64,12 +64,9 @@ This section should list any major frameworks/libraries used to bootstrap your p
 
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
-
 ### Prerequisites
-
-Make sure you installed the node and mongodb. MongoDB is optional as most of the apps does not require storing data.
+- Create your app at [partners.tribe.so](https://partners.tribe.so)
+- Make sure you installed the node and mongodb. MongoDB is optional as most of the apps does not require storing data.
 
 ### Installation
 
@@ -86,20 +83,19 @@ You have two ways to use this template.
 
 #### Cloning the repository
 
-1. Create your app at [partners.tribe.so](https://partners.tribe.so)
-2. Clone the repo
+1. Clone the repo
    ```sh
    git clone https://github.com/tribeplatform/tribe-starter-app
    ```
-3. Install packages
+2. Install packages
    ```sh
    yarn
    ```
-4. Create your .env file by duplicating .env.example
+3. Create your .env file by duplicating .env.example
    ```js
    cp .env.example .env;
    ```
-5. Add the credentials of your app, database, etc in the .env
+4. Add the credentials of your app, database, etc in the .env
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
