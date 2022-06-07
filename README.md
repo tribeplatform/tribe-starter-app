@@ -69,11 +69,22 @@ To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
-Make sure you install the node and mongodb
+Make sure you installed the node and mongodb. MongoDB is optional as most of the apps does not require storing data.
 
 ### Installation
 
-_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
+You have two ways to use this template.
+
+#### Using create-tribe-app
+
+1. Go to the terminal and run the following command `npx create-tribe-app <your-app-name>`
+2. Install NPM packages
+	```sh
+   npm install
+   ```
+3. Add the credentials of your app, database, etc in the .env
+
+#### Cloning the repository
 
 1. Create your app at [partners.tribe.so](https://partners.tribe.so)
 2. Clone the repo
@@ -96,8 +107,14 @@ _Below is an example of how you can instruct your audience on installing and set
 
 ## Usage
 
+Here are list of apps using tribe-starter-app
 
-- [Mixpanel app](https://github.com/tribeplatform/tribe-mixpanel-app)
+- [Mixpanel](https://github.com/tribeplatform/tribe-mixpanel-app)
+- [Google Analytics](https://github.com/tribeplatform/google-analytics-app)
+- [Google Tag Manager](https://github.com/tribeplatform/google-tag-manager-app)
+- [Fullstory](https://github.com/tribeplatform/fullstory-app)
+- [Slack](https://github.com/tribeplatform/slack-app)
+- [Mailchimp](https://github.com/tribeplatform/tribe-mixpanel-app)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
