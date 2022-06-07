@@ -105,13 +105,13 @@ You have two ways to use this template.
 
 Here are list of apps using tribe-starter-app
 
-- [Mixpanel](https://github.com/tribeplatform/tribe-mixpanel-app)
+- [Mixpanel](https://github.com/tribeplatform/mixpanel-app)
 - [Google Analytics](https://github.com/tribeplatform/google-analytics-app)
 - [Google Tag Manager](https://github.com/tribeplatform/google-tag-manager-app)
 - [Fullstory](https://github.com/tribeplatform/fullstory-app)
 - [Hotjar](https://github.com/tribeplatform/hotjar-app)
 - [Slack](https://github.com/tribeplatform/slack-app)
-- [Mailchimp](https://github.com/tribeplatform/tribe-mailchimp-app)
+- [Mailchimp](https://github.com/tribeplatform/mailchimp-app)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
