@@ -1,6 +1,6 @@
-import { CREDENTIALS, LOG_FORMAT, NODE_ENV, ORIGIN, PORT } from '@config';
+import { CREDENTIALS, NODE_ENV, ORIGIN, PORT } from '@config';
 import { connect, set } from 'mongoose';
-import { logger, stream } from '@utils/logger';
+import { logger } from '@utils/logger';
 import { Routes } from '@interfaces/routes.interface';
 import bodyParser from 'body-parser';
 import compression from 'compression';
@@ -11,7 +11,6 @@ import errorMiddleware from '@middlewares/error.middleware';
 import express from 'express';
 import helmet from 'helmet';
 import hpp from 'hpp';
-import morgan from 'morgan';
 import path from 'path';
 
 class App {
@@ -32,10 +31,10 @@ class App {
 
   public listen() {
     this.app.listen(this.port, () => {
-      logger.info(`=================================`);
-      logger.info(`======= ENV: ${this.env} =======`);
-      logger.info(`🚀 App listening on the port ${this.port}`);
-      logger.info(`=================================`);
+      logger.log(`=================================`);
+      logger.log(`======= ENV: ${this.env} =======`);
+      logger.log(`🚀 App listening on the port ${this.port}`);
+      logger.log(`=================================`);
     });
   }
 
@@ -58,7 +57,6 @@ class App {
   }
 
   private initializeMiddlewares() {
-    this.app.use(morgan(LOG_FORMAT, { stream }));
     this.app.use(cors({ origin: ORIGIN, credentials: CREDENTIALS }));
     this.app.use(express.static(path.join(__dirname, 'public')));
     this.app.use(

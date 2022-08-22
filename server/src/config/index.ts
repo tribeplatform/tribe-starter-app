@@ -1,3 +1,4 @@
+
 export const CREDENTIALS = process.env.CREDENTIALS === 'true';
 export const {
   NODE_ENV,
@@ -6,10 +7,9 @@ export const {
   CLIENT_ID,
   CLIENT_SECRET,
   SIGNING_SECRET,
-  NETWORK_ID,
-  MEMBER_ID,
   GRAPHQL_URL,
   LOG_FORMAT,
   LOG_DIR = '../logs',
   ORIGIN,
+  LOGGER_PRETTY_PRINT,
 } = process.env;
