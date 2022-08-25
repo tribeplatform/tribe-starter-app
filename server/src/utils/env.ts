@@ -12,7 +12,6 @@ const schema = {
 
 const envValues = Object.fromEntries(Object.keys(schema).map(key => [key, process?.env[key]]))
 const result = Joi.object(schema).validate(envValues);
-console.log(result)
 if (result.error) {
   throw new Error(`Environment variables validation failed: ${result?.error?.message}`);
 }
