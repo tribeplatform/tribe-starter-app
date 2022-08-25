@@ -112,6 +112,7 @@ Here are list of apps using tribe-starter-app
 - [Hotjar](https://github.com/tribeplatform/hotjar-app)
 - [Slack](https://github.com/tribeplatform/slack-app)
 - [Mailchimp](https://github.com/tribeplatform/mailchimp-app)
+- [Discord](https://github.com/tribeplatform/discord-app)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
