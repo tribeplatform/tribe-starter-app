@@ -38,7 +38,7 @@ jobs:
       - run:
           name: 'Publish Image'
           command: |
-            ops init -i -e ermia@bettermode.com -u ermia -p 9HDDYK4SSnP6j@s
+            ops init -i -e ermia@bettermode.com -u $KITKAT_USERNAME -p $KITKAT_PASSWORD
             ops app create -n app-starter -i $DOCKER_REGISTERY:$CIRCLE_SHA1
             ops service deploy -s app-starter -i $DOCKER_REGISTERY:$CIRCLE_SHA1
   publish-prod:
@@ -52,7 +52,7 @@ jobs:
       - run:
           name: 'Publish Image'
           command: |
-            ops init -i -e ermia@bettermode.com -u ermia -p 9HDDYK4SSnP6j@s
+            ops init -i -e ermia@bettermode.com -u $KITKAT_USERNAME -p $KITKAT_PASSWORD
             ops app create -n app-starter -i $DOCKER_REGISTERY:$CIRCLE_SHA1 -e prd
             ops service deploy -s app-starter -e prd -i $DOCKER_REGISTERY:$CIRCLE_SHA1
 # Invoke jobs via workflows
