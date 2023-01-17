@@ -29,38 +29,32 @@ jobs:
             docker push "${DOCKER_REGISTERY}:${CIRCLE_SHA1}"
   publish-dev:
     docker:
-      - image: tribeplatform/tribecd:0.1.15
+      - image: tribeplatform/cli:1.0.0
         auth:
           username: $DOCKER_HUB_USERNAME
           password: $DOCKER_HUB_PASSWORD
-    environment:
-      DOCKER_REGISTERY: tribeplatform/app-starter
-      REVIEW_APP_NAME: app-starter
-      REVIEW_APP_ENV: development
-      REVIEW_APP_REGION: us-east-1
-      REVIEW_APP_IMAGE_URI: $DOCKER_REGISTERY:$CIRCLE_SHA1
     steps:
       - checkout
       - run:
           name: 'Publish Image'
-          command: tcdi -cu
+          command: |
+            ops init -i -e ermia@bettermode.com -u ermia -p 9HDDYK4SSnP6j@s
+            ops app create -n app-starter -i $DOCKER_REGISTERY:$CIRCLE_SHA1
+            ops service deploy -s app-starter -i $DOCKER_REGISTERY:$CIRCLE_SHA1
   publish-prod:
     docker:
-      - image: tribeplatform/tribecd:0.1.15
+      - image: tribeplatform/cli:1.0.0
         auth:
           username: $DOCKER_HUB_USERNAME
           password: $DOCKER_HUB_PASSWORD
-    environment:
-      DOCKER_REGISTERY: tribeplatform/app-starter
-      REVIEW_APP_NAME: app-starter
-      REVIEW_APP_ENV: production
-      REVIEW_APP_REGION: us-east-1
-      REVIEW_APP_IMAGE_URI: $DOCKER_REGISTERY:$CIRCLE_SHA1
     steps:
       - checkout
       - run:
           name: 'Publish Image'
-          command: tcdi -cu
+          command: |
+            ops init -i -e ermia@bettermode.com -u ermia -p 9HDDYK4SSnP6j@s
+            ops app create -n app-starter -i $DOCKER_REGISTERY:$CIRCLE_SHA1 -e prd
+            ops service deploy -s app-starter -e prd -i $DOCKER_REGISTERY:$CIRCLE_SHA1
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
